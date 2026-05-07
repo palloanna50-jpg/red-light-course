@@ -1,0 +1,517 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Красный свет: восстановление без таблеток | Полный онлайн-курс по RLT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fefefe;
+            color: #1f2937;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* color scheme */
+        :root {
+            --primary: #b91c1c;    /* тёмно-красный */
+            --primary-dark: #7f1a1a;
+            --primary-light: #fee2e2;
+            --secondary: #1e3a8a;  /* тёмно-синий */
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-700: #374151;
+            --gray-900: #111827;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.25rem; }
+            h2 { font-size: 1.75rem; }
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            padding: 0.9rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-alt {
+            background: var(--gray-50);
+        }
+
+        /* cards и сетка */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: 0.2s;
+            height: 100%;
+        }
+
+        .lesson-card {
+            border-left: 4px solid var(--primary);
+        }
+
+        .stat-badge {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 100px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .price-tag {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 28px;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(185,28,28,0.1);
+        }
+
+        /* аккордеон для программы */
+        .accordion-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .accordion-header {
+            padding: 1.2rem 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            border-radius: 16px;
+            transition: 0.1s;
+        }
+        .accordion-header:hover {
+            background: var(--gray-50);
+        }
+        .accordion-content {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            display: none;
+            border-top: 1px solid #f0f0f0;
+        }
+        .accordion-content.show {
+            display: block;
+        }
+        .accordion-icon {
+            transition: transform 0.2s;
+            font-size: 1.4rem;
+        }
+        .rotate {
+            transform: rotate(180deg);
+        }
+
+        footer {
+            background: var(--gray-900);
+            color: #9ca3af;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .trust-badge {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header style="background: white; border-bottom: 1px solid #eee; padding: 1rem 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div style="font-weight: 800; font-size: 1.5rem; color: var(--primary);">КРАСВЕДА<span style="color: #1f2937;">КУРС</span></div>
+        <div>
+            <a href="#program" style="margin-right: 1.5rem; text-decoration: none; color: #4b5563;">Программа</a>
+            <a href="#bonus" style="margin-right: 1.5rem; text-decoration: none; color: #4b5563;">Бонусы</a>
+            <a href="#form" class="btn" style="padding: 0.5rem 1.2rem;">Получить курс</a>
+        </div>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="section">
+    <div class="container">
+        <div class="grid-2" style="align-items: center;">
+            <div>
+                <span class="stat-badge">★ Научно обоснованный курс</span>
+                <h1>Красный свет: <span style="color: var(--primary);">восстановление без таблеток</span></h1>
+                <p style="font-size: 1.2rem; margin: 1.5rem 0; color: #4b5563;">Полный онлайн-курс по терапии красным и ближним инфракрасным светом. 10 уроков по 20 минут — наука, протоколы, практика для кожи, суставов, сна, иммунитета и внутренних органов.</p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#form" class="btn">Записаться бесплатно</a>
+                    <a href="#program" class="btn-outline btn">Смотреть программу</a>
+                </div>
+                <div class="trust-badge" style="justify-content: flex-start; margin-top: 2rem;">
+                    <span>✅ 10 видео-уроков</span>
+                    <span>✅ Научные протоколы</span>
+                    <span>✅ Трекеры и чек-листы</span>
+                </div>
+            </div>
+            <div style="background: var(--primary-light); border-radius: 2rem; padding: 1rem; text-align: center;">
+                <img src="https://placehold.co/500x400/fee2e2/b91c1c?text=Red+Light+Therapy" alt="Red light therapy" style="max-width: 100%; border-radius: 1rem;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Проблема / решение -->
+<section class="section-alt">
+    <div class="container">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">
+            <h2>Проблема, с которой сталкиваются миллионы</h2>
+            <p style="font-size: 1.1rem;">Хроническая боль, плохой сон, увядание кожи, стресс и снижение энергии — вы пробовали лекарства и процедуры, но результат временный, а побочные эффекты пугают.</p>
+        </div>
+        <div class="grid-2" style="gap: 2rem;">
+            <div class="card">
+                <h3 style="color: var(--primary);">× Таблетки</h3>
+                <p>Побочные эффекты, привыкание, токсичность при долгом приёме.</p>
+            </div>
+            <div class="card">
+                <h3 style="color: var(--primary);">× Дорогая косметология</h3>
+                <p>Инъекции и лазеры — травматично, дорого, эффект до полугода.</p>
+            </div>
+            <div class="card">
+                <h3 style="color: var(--primary);">× Бессонница и стресс</h3>
+                <p>Снотворные и антидепрессанты не решают причину.</p>
+            </div>
+            <div class="card">
+                <h3 style="color: var(--primary);">✔ Решение: Красный свет</h3>
+                <p>Стимулирует митохондрии, запускает регенерацию без химии и боли. Научно доказано в сотнях исследований.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Программа курса (спойлеры) -->
+<section id="program" class="section">
+    <div class="container">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+            <h2>Программа курса</h2>
+            <p>10 уроков · 20 минут каждый · Видео + PDF-шпаргалки + трекеры</p>
+        </div>
+        <div id="accordion">
+            <!-- Урок 1 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><strong>Урок 1 (20 мин)</strong> — Что такое красный свет и как он чинит ваши клетки</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>История технологии (от NASA до дома), длины волн (660/850 нм), митохондрии и АТФ, базовые эффекты на организм.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><strong>Урок 2 (20 мин)</strong> — Кожа: омоложение, акне, розацеа, заживление</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>+35% коллагена, –31% морщин, мета-анализ акне (–45% элементов), ускорение заживления ран на 30%, протоколы для лица.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><strong>Урок 3 (20 мин)</strong> — Суставы, мышцы, позвоночник: убираем боль</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Остеоартрит колена, боль в спине, восстановление мышц (+28 Н·м силы), протоколы для суставов и спины.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><strong>Урок 4 (20 мин)</strong> — Стоматология: после удаления, герпес, пародонтит</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>РКИ 2024: снижение боли после удаления зубов, ускорение заживления, мета-анализ герпеса (сокращение на 1,2 дня), регенерация нерва.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><strong>Урок 5 (20 мин)</strong> — Нервная система: сон, стресс, память</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Глубокий сон +21%, мелатонин +32%, снижение кортизола на 22%, улучшение памяти на 17% (исследования). Протоколы для сна и ясности ума.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><strong>Урок 6 (20 мин)</strong> — Иммунитет и гормоны: щитовидная железа, кортизол</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>РКИ 2025: болезнь Хашимото — снижение антител и объёма железы, снижение дозы LT4. Кортизол, мелатонин, поддержка иммунитета.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><strong>Урок 7 (20 мин)</strong> — Сердечно-сосудистая система: давление, микроциркуляция</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Снижение АД на 8–10 мм рт.ст. (РКИ 2023), улучшение кровотока при диабете (+42%), протоколы, противопоказания (тромбозы, антикоагулянты).</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><strong>Урок 8 (20 мин)</strong> — Внутренние органы и гинекология</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Печень, поджелудочная, СРК (пилот –38% симптомов), дисменорея: снижение боли на 4,2 балла. Протоколы и предостережения.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><strong>Урок 9 (20 мин)</strong> — Как выбрать прибор. Почему Красведа?</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Параметры качества: длина волны, плотность потока, сертификация. Сравнение типов приборов, чек-лист покупателя, преимущества Красведа.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><strong>Урок 10 (20 мин)</strong> — Ритуал: медитация + формирование привычки</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Синергия света и осознанности, готовая 10-минутная медитация, трекер привычки, создание ежедневного ритуала.</p>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="#form" class="btn">Начать обучение</a>
+        </div>
+    </div>
+</section>
+
+<!-- Цифры / исследования -->
+<section class="section-alt">
+    <div class="container">
+        <div style="text-align: center;">
+            <h2>Научные данные, а не обещания</h2>
+            <p class="grid-3" style="margin-top: 2rem;">
+                <span class="stat-badge" style="font-size: 1.2rem; background: white;">📈 +35% коллагена</span>
+                <span class="stat-badge" style="font-size: 1.2rem; background: white;">😴 +21% глубокого сна</span>
+                <span class="stat-badge" style="font-size: 1.2rem; background: white;">🩸 –10 мм рт.ст. давление</span>
+                <span class="stat-badge" style="font-size: 1.2rem; background: white;">🧴 –45% акне</span>
+                <span class="stat-badge" style="font-size: 1.2rem; background: white;">⚡ снижение кортизола 22%</span>
+                <span class="stat-badge" style="font-size: 1.2rem; background: white;">🦷 герпес заживает на 1,2 дня быстрее</span>
+            </p>
+            <p style="margin-top: 1rem;"><small>Данные рецензируемых исследований (PubMed, 2020–2025). Ссылки предоставляются в курсе.</small></p>
+        </div>
+    </div>
+</section>
+
+<!-- Бонусы -->
+<section id="bonus" class="section">
+    <div class="container">
+        <div style="text-align: center;">
+            <h2>Бонусы для выпускников</h2>
+            <div class="grid-3" style="margin-top: 2rem;">
+                <div class="card"><strong>📘 PDF-книга</strong><br>«Полное руководство по RLT» (50 стр.)</div>
+                <div class="card"><strong>🎧 Аудиомедитация</strong><br>12 минут под красный свет</div>
+                <div class="card"><strong>📋 Чек-лист привычки</strong><br>50 способов не пропускать сеанс</div>
+                <div class="card"><strong>🤝 Закрытый чат</strong><br>Поддержка и общение 2 месяца</div>
+                <div class="card"><strong>💸 Промокод REDVEDA10</strong><br>Скидка 10% на прибор Красведа</div>
+                <div class="card"><strong>🎁 Скидка 15%</strong><br>На второй прибор для близких</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Форма захвата -->
+<section id="form" class="section-alt">
+    <div class="container">
+        <div style="max-width: 650px; margin: 0 auto; text-align: center;">
+            <h2>Запишитесь на курс сейчас</h2>
+            <p style="margin-bottom: 2rem;">Получите бесплатный доступ ко всем 10 урокам, шпаргалкам и бонусам. Начните восстанавливать здоровье с научным подходом.</p>
+            <div style="background: white; border-radius: 1.5rem; padding: 2rem; box-shadow: 0 12px 24px rgba(0,0,0,0.05);">
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <input type="text" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="E-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <select>
+                            <option>Что вас беспокоит больше всего?</option>
+                            <option>Кожа / морщины / акне</option>
+                            <option>Боль в суставах/спине</option>
+                            <option>Сон / стресс / усталость</option>
+                            <option>Иммунитет / гормоны</option>
+                            <option>Внутренние органы</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Получить курс бесплатно →</button>
+                </form>
+                <p style="font-size: 0.8rem; margin-top: 1rem;">Никакого спама, только полезные материалы. Вы всегда можете отписаться.</p>
+            </div>
+            <div class="trust-badge" style="justify-content: center; margin-top: 2rem;">
+                <span>☆ 2000+ участников</span>
+                <span>☆ 96% рекомендуют</span>
+                <span>☆ Доступ сразу после регистрации</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+    <div class="container">
+        <h2 style="text-align: center;">Часто задаваемые вопросы</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div style="margin-bottom: 1.5rem;">
+                <strong>❓ Нужен ли специальный прибор для курса?</strong>
+                <p>В курсе даны теоретические знания и протоколы, понятные без прибора, но лучший результат — с сертифицированным устройством (рекомендуем Красведа).</p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <strong>❓ Есть ли противопоказания?</strong>
+                <p>Да, например, беременность (живот), онкология в зоне облучения, острый тромбоз, эпилепсия. В каждом уроке выделены меры предосторожности.</p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <strong>❓ Можно ли проходить курс врачам и тренерам?</strong>
+                <p>Конечно. Материалы основаны на доказательной медицине и пригодятся для внедрения RLT в практику.</p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <strong>❓ Как долго длится доступ?</strong>
+                <p>Доступ к видео и материалам бессрочный. Вы учитесь в своем темпе.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>© КРАСВЕДА. Все права защищены. <br> Курс разработан экспертами в области физиотерапии и биохакинга.</p>
+        <p style="margin-top: 0.5rem;"><a href="#" style="color: #9ca3af; text-decoration: none;">Политика конфиденциальности</a> | <a href="#" style="color: #9ca3af; text-decoration: none;">Договор оферты</a></p>
+    </div>
+</footer>
+
+<script>
+    function toggleAccordion(element) {
+        const content = element.nextElementSibling;
+        const icon = element.querySelector('.accordion-icon');
+        content.classList.toggle('show');
+        if (icon) icon.classList.toggle('rotate');
+    }
+    // открыть первый по умолчанию? можно по желанию
+    document.querySelectorAll('.accordion-content.show').forEach(el => el.classList.remove('show'));
+</script>
+</body>
+</html>
+```
